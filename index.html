@@ -599,7 +599,7 @@ tr.clickable-row:hover td{background:var(--surface2);cursor:pointer}
         <div style="padding:0 1.25rem 1rem;display:flex;gap:1.5rem;flex-wrap:wrap">
           <div><div style="font-size:1.6rem;font-weight:800;color:var(--accent)" id="pulseCurPct">-</div><div style="font-size:0.72rem;color:var(--muted)">Latest week</div></div>
           <div><div style="font-size:1.6rem;font-weight:800" id="pulseTrendDir">-</div><div style="font-size:0.72rem;color:var(--muted)" id="pulseTrendLabel">vs prior week</div></div>
-          <div><div style="font-size:1.6rem;font-weight:800;color:var(--accent)" id="pulseMonthPct">-</div><div style="font-size:0.72rem;color:var(--muted)">Month avg (Mar)</div></div>
+          <div><div style="font-size:1.6rem;font-weight:800;color:var(--accent)" id="pulseMonthPct">-</div><div style="font-size:0.72rem;color:var(--muted)">Month avg (Apr)</div></div>
         </div>
       </div>
       <div class="snapshot-card" style="margin:0">
@@ -1885,7 +1885,7 @@ function renderPulse() {
   el('pulseTrendDir').innerHTML = isFlat ? '&mdash;' : (isUp ? '+' : '') + delta + '%';
   el('pulseTrendDir').style.color = isUp ? 'var(--green)' : isFlat ? 'var(--muted)' : 'var(--red)';
   el('pulseTrendLabel').textContent = 'vs prior week (' + weekly[weekly.length-2].label + ')';
-  var marMonthly = monthly.find(function(m){ return m.month === '2026-03'; });
+  var marMonthly = monthly.find(function(m){ return m.month === '2026-04'; });
   el('pulseMonthPct').textContent = marMonthly ? marMonthly.fullPct + '%' : '-';
   if (pulseTrendChartInst) { pulseTrendChartInst.destroy(); pulseTrendChartInst = null; }
   var ctx = document.getElementById('pulseTrendChart');
@@ -1909,8 +1909,8 @@ function renderPulse() {
         responsive: true, maintainAspectRatio: true,
         plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c){ return c.parsed.y + '%'; } } } },
         scales: {
-          x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8a9a9a', font: { size: 11 } } },
-          y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8a9a9a', font: { size: 11 }, callback: function(v){ return v + '%'; } }, min: 30, max: 50 }
+          x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8a9a9a', font: { size: 10 }, maxRotation: 45, minRotation: 30 } },
+          y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8a9a9a', font: { size: 11 }, callback: function(v){ return v + '%'; } }, min: 30, max: 60 }
         }
       }
     });
