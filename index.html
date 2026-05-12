@@ -515,7 +515,8 @@ tr.clickable-row:hover td{background:var(--surface2);cursor:pointer}
     </div>
     <div class="ctrl-right">
       <div class="tgroup" id="qaViewModeGrp">
-        <button class="tbtn active" onclick="setQAViewMode(this,'month_2026_04')">April 2026</button>
+        <button class="tbtn active" onclick="setQAViewMode(this,'month_2026_05')">May 2026</button>
+        <button class="tbtn" onclick="setQAViewMode(this,'month_2026_04')">April 2026</button>
         <button class="tbtn" onclick="setQAViewMode(this,'month_2026_03')">March 2026</button>
         <button class="tbtn" onclick="setQAViewMode(this,'month_2026_02')">February 2026</button>
       </div>
@@ -602,7 +603,7 @@ tr.clickable-row:hover td{background:var(--surface2);cursor:pointer}
         </div>
       </div>
       <div class="snapshot-card" style="margin:0">
-        <div class="snapshot-hdr"><div class="snapshot-title">Channel Efficiency</div><div style="font-size:0.72rem;color:var(--muted)">Full resolution % by channel &mdash; April 2026</div></div>
+        <div class="snapshot-hdr"><div class="snapshot-title">Channel Efficiency</div><div style="font-size:0.72rem;color:var(--muted)">Full resolution % by channel &mdash; May 2026</div></div>
         <div id="pulseChannels" style="padding:1rem 1.25rem;display:flex;flex-direction:column;gap:0.75rem"></div>
       </div>
     </div>
@@ -635,19 +636,19 @@ var S  = {period:'lastWeek', channel:'All', view:'cards', viewMode:'weekly', sor
 var LS = {period:'lastWeek', channel:'All', viewMode:'weekly'};
 var pieObj=null, lineObj=null, leadBarObj=null;
 var modalCases=[];
-var WEEKLY_PERIODS  = ['lastWeek','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216','week_0209'];
-var WEEKLY_LABELS   = ['Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16','Feb 9'];
-var MONTHLY_PERIODS = ['month_2026_04','month_2026_03','month_2026_02','month_2026_01'];
-var MONTHLY_LABELS  = ['April 2026','March 2026','February 2026','January 2026'];
-var LEAD_WEEKLY_PERIODS  = ['lastWeek','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216','week_0209'];
-var LEAD_WEEKLY_LABELS   = ['Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16','Feb 9'];
-var LEAD_MONTHLY_PERIODS = ['month_2026_04','month_2026_03','month_2026_02','month_2026_01'];
-var LEAD_MONTHLY_LABELS  = ['April 2026','March 2026','February 2026','January 2026'];
+var WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
+var WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02','month_2026_01'];
+var MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026','January 2026'];
+var LEAD_WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
+var LEAD_WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var LEAD_MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02','month_2026_01'];
+var LEAD_MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026','January 2026'];
 // ============================================================
 // PERIOD HELPER
 // ============================================================
 function getPrevPeriod(period) {
-  var map = {'lastWeek':'week_0420','week_0420':'week_0413','week_0413':'week_0406','week_0406':'week_0330','week_0330':'week_0323','week_0323':'week_0316','week_0316':'week_0309','week_0309':'week_0302','week_0302':'week_0223','week_0223':'week_0216','week_0216':'week_0209','week_0209':'week_0202','week_0202':'week_0126','week_0126':'week_0119','week_0119':'week_0112','week_0112':'week_0105','week_0105':'week_1229','week_1229':null,'month_2026_04':'month_2026_03','month_2026_03':'month_2026_02','month_2026_02':'month_2026_01','month_2026_01':null};
+  var map = {'lastWeek':'week_0427','week_0427':'week_0420','week_0420':'week_0413','week_0413':'week_0406','week_0406':'week_0330','week_0330':'week_0323','week_0323':'week_0316','week_0316':'week_0309','week_0309':'week_0302','week_0302':'week_0223','week_0223':'week_0216','week_0216':'week_0209','week_0209':'week_0202','week_0202':'week_0126','week_0126':'week_0119','week_0119':'week_0112','week_0112':'week_0105','week_0105':'week_1229','week_1229':null,'month_2026_05':'month_2026_04','month_2026_04':'month_2026_03','month_2026_03':'month_2026_02','month_2026_02':'month_2026_01','month_2026_01':null};
   return map[period] || null;
 }
 // ============================================================
@@ -1307,10 +1308,10 @@ function updateLeadProgress(leadId) {
 // COACHING PRIORITY TAB
 // ============================================================
 var CS = { period:'lastWeek', viewMode:'weekly' };
-var COACH_WEEKLY_PERIODS  = ['lastWeek','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216','week_0209'];
-var COACH_WEEKLY_LABELS   = ['Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16','Feb 9'];
-var COACH_MONTHLY_PERIODS = ['month_2026_04','month_2026_03','month_2026_02'];
-var COACH_MONTHLY_LABELS  = ['April 2026','March 2026','February 2026'];
+var COACH_WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
+var COACH_WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var COACH_MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02'];
+var COACH_MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026'];
 function setCoachViewMode(btn, mode) {
   CS.viewMode = mode;
   document.querySelectorAll('#coachViewModeGrp .tbtn').forEach(function(b){b.classList.remove('active');});
@@ -1553,10 +1554,10 @@ function renderAgentCoachCases(container, agent) {
 // CUSTOMER TOUCHPOINT THEMES TAB
 // ============================================================
 var TS = { period: 'lastWeek', viewMode: 'weekly' };
-var THEMES_WEEKLY_PERIODS  = ['lastWeek','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216','week_0209'];
-var THEMES_WEEKLY_LABELS   = ['Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16','Feb 9'];
-var THEMES_MONTHLY_PERIODS = ['month_2026_04','month_2026_03','month_2026_02'];
-var THEMES_MONTHLY_LABELS  = ['April 2026','March 2026','February 2026'];
+var THEMES_WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
+var THEMES_WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var THEMES_MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02'];
+var THEMES_MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026'];
 function setThemesViewMode(btn, mode) {
   TS.viewMode = mode;
   document.querySelectorAll('#themesViewModeGrp .tbtn').forEach(function(b){b.classList.remove('active');});
@@ -1914,7 +1915,7 @@ function renderPulse() {
       }
     });
   }
-  var chData = S.data.data['month_2026_04'] ? S.data.data['month_2026_04'].channels : {};
+  var chData = S.data.data['month_2026_05'] ? S.data.data['month_2026_05'].channels : {};
   var chEl = el('pulseChannels');
   chEl.innerHTML = '';
   ['Call','Chat','Email'].forEach(function(ch) {
@@ -1932,9 +1933,9 @@ function renderPulse() {
         '<span style="font-size:0.7rem;color:var(--muted)">' + d.total.toLocaleString() + ' cases</span>' +
       '</div>';
   });
-  var WEEKLY_ORDER = ['week_1229','week_0105','week_0112','week_0119','week_0126','week_0202','week_0209','week_0216','week_0223','week_0302','week_0309','week_0316','week_0323','week_0330','week_0406','week_0413','week_0420','lastWeek'];
-  var WEEK_LABELS_MAP = {'week_1229':'Dec 29','week_0105':'Jan 5','week_0112':'Jan 12','week_0119':'Jan 19','week_0126':'Jan 26','week_0202':'Feb 2','week_0209':'Feb 9','week_0216':'Feb 16','week_0223':'Feb 23','week_0302':'Mar 2','week_0309':'Mar 9','week_0316':'Mar 16','week_0323':'Mar 23','week_0330':'Mar 30','week_0406':'Apr 6','week_0413':'Apr 13','week_0420':'Apr 20','lastWeek':'Apr 27'};
-  var RECENT_WKS = ['week_0406','week_0413','week_0420','lastWeek'];
+  var WEEKLY_ORDER = ['week_1229','week_0105','week_0112','week_0119','week_0126','week_0202','week_0209','week_0216','week_0223','week_0302','week_0309','week_0316','week_0323','week_0330','week_0406','week_0413','week_0420','week_0427','lastWeek'];
+  var WEEK_LABELS_MAP = {'week_1229':'Dec 29','week_0105':'Jan 5','week_0112':'Jan 12','week_0119':'Jan 19','week_0126':'Jan 26','week_0202':'Feb 2','week_0209':'Feb 9','week_0216':'Feb 16','week_0223':'Feb 23','week_0302':'Mar 2','week_0309':'Mar 9','week_0316':'Mar 16','week_0323':'Mar 23','week_0330':'Mar 30','week_0406':'Apr 6','week_0413':'Apr 13','week_0420':'Apr 20','week_0427':'Apr 27','lastWeek':'May 4'};
+  var RECENT_WKS = ['week_0413','week_0420','week_0427','lastWeek'];
   var leadWeekly = {};
   WEEKLY_ORDER.forEach(function(wk){
     if (!leads[wk]) return;
@@ -2020,6 +2021,7 @@ function renderPulse() {
     oppEl.innerHTML = '<div style="padding:1rem;color:var(--muted);font-size:0.82rem">Theme data not available</div>';
   }
   var qaMonths = [
+    { key: 'month_2026_05', label: 'May 2026' },
     { key: 'month_2026_04', label: 'April 2026' },
     { key: 'month_2026_03', label: 'March 2026' },
     { key: 'month_2026_02', label: 'February 2026' }
