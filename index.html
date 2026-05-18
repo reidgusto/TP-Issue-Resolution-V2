@@ -1774,7 +1774,7 @@ function renderQA() {
   el('qaNoDiv').style.display = 'none';
   el('qaMainDiv').style.display = 'block';
   var s = qa.summary;
-  var label = QAS.period === 'month_2026_03' ? 'March 2026' : 'February 2026';
+  var label = qa.period_label || (S.data.meta && S.data.meta.periods[QAS.period] ? S.data.meta.periods[QAS.period].label : QAS.period);
   el('qaSub').textContent = label + ' | ' + s.agents_audited + ' agents audited | ' + s.total_manual + ' conversations reviewed';
   txt('qaKTotal', s.total_manual.toLocaleString());
   txt('qaKAgents', s.agents_audited + ' agents audited');
