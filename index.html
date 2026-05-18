@@ -636,19 +636,19 @@ var S  = {period:'lastWeek', channel:'All', view:'cards', viewMode:'weekly', sor
 var LS = {period:'lastWeek', channel:'All', viewMode:'weekly'};
 var pieObj=null, lineObj=null, leadBarObj=null;
 var modalCases=[];
-var WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
-var WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var WEEKLY_PERIODS  = ['lastWeek','week_0504','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223'];
+var WEEKLY_LABELS   = ['May 11','May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23'];
 var MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02','month_2026_01'];
 var MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026','January 2026'];
-var LEAD_WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
-var LEAD_WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var LEAD_WEEKLY_PERIODS  = ['lastWeek','week_0504','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223'];
+var LEAD_WEEKLY_LABELS   = ['May 11','May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23'];
 var LEAD_MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02','month_2026_01'];
 var LEAD_MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026','January 2026'];
 // ============================================================
 // PERIOD HELPER
 // ============================================================
 function getPrevPeriod(period) {
-  var map = {'lastWeek':'week_0427','week_0427':'week_0420','week_0420':'week_0413','week_0413':'week_0406','week_0406':'week_0330','week_0330':'week_0323','week_0323':'week_0316','week_0316':'week_0309','week_0309':'week_0302','week_0302':'week_0223','week_0223':'week_0216','week_0216':'week_0209','week_0209':'week_0202','week_0202':'week_0126','week_0126':'week_0119','week_0119':'week_0112','week_0112':'week_0105','week_0105':'week_1229','week_1229':null,'month_2026_05':'month_2026_04','month_2026_04':'month_2026_03','month_2026_03':'month_2026_02','month_2026_02':'month_2026_01','month_2026_01':null};
+  var map = {'lastWeek':'week_0504','week_0504':'week_0427','week_0427':'week_0420','week_0420':'week_0413','week_0413':'week_0406','week_0406':'week_0330','week_0330':'week_0323','week_0323':'week_0316','week_0316':'week_0309','week_0309':'week_0302','week_0302':'week_0223','week_0223':'week_0216','week_0216':'week_0209','week_0209':'week_0202','week_0202':'week_0126','week_0126':'week_0119','week_0119':'week_0112','week_0112':'week_0105','week_0105':'week_1229','week_1229':null,'month_2026_05':'month_2026_04','month_2026_04':'month_2026_03','month_2026_03':'month_2026_02','month_2026_02':'month_2026_01','month_2026_01':null};
   return map[period] || null;
 }
 // ============================================================
@@ -1308,8 +1308,8 @@ function updateLeadProgress(leadId) {
 // COACHING PRIORITY TAB
 // ============================================================
 var CS = { period:'lastWeek', viewMode:'weekly' };
-var COACH_WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
-var COACH_WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var COACH_WEEKLY_PERIODS  = ['lastWeek','week_0504','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223'];
+var COACH_WEEKLY_LABELS   = ['May 11','May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23'];
 var COACH_MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02'];
 var COACH_MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026'];
 function setCoachViewMode(btn, mode) {
@@ -1554,8 +1554,8 @@ function renderAgentCoachCases(container, agent) {
 // CUSTOMER TOUCHPOINT THEMES TAB
 // ============================================================
 var TS = { period: 'lastWeek', viewMode: 'weekly' };
-var THEMES_WEEKLY_PERIODS  = ['lastWeek','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223','week_0216'];
-var THEMES_WEEKLY_LABELS   = ['May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23','Feb 16'];
+var THEMES_WEEKLY_PERIODS  = ['lastWeek','week_0504','week_0427','week_0420','week_0413','week_0406','week_0330','week_0323','week_0316','week_0309','week_0302','week_0223'];
+var THEMES_WEEKLY_LABELS   = ['May 11','May 4','Apr 27','Apr 20','Apr 13','Apr 6','Mar 30','Mar 23','Mar 16','Mar 9','Mar 2','Feb 23'];
 var THEMES_MONTHLY_PERIODS = ['month_2026_05','month_2026_04','month_2026_03','month_2026_02'];
 var THEMES_MONTHLY_LABELS  = ['May 2026','April 2026','March 2026','February 2026'];
 function setThemesViewMode(btn, mode) {
@@ -1933,9 +1933,9 @@ function renderPulse() {
         '<span style="font-size:0.7rem;color:var(--muted)">' + d.total.toLocaleString() + ' cases</span>' +
       '</div>';
   });
-  var WEEKLY_ORDER = ['week_1229','week_0105','week_0112','week_0119','week_0126','week_0202','week_0209','week_0216','week_0223','week_0302','week_0309','week_0316','week_0323','week_0330','week_0406','week_0413','week_0420','week_0427','lastWeek'];
-  var WEEK_LABELS_MAP = {'week_1229':'Dec 29','week_0105':'Jan 5','week_0112':'Jan 12','week_0119':'Jan 19','week_0126':'Jan 26','week_0202':'Feb 2','week_0209':'Feb 9','week_0216':'Feb 16','week_0223':'Feb 23','week_0302':'Mar 2','week_0309':'Mar 9','week_0316':'Mar 16','week_0323':'Mar 23','week_0330':'Mar 30','week_0406':'Apr 6','week_0413':'Apr 13','week_0420':'Apr 20','week_0427':'Apr 27','lastWeek':'May 4'};
-  var RECENT_WKS = ['week_0413','week_0420','week_0427','lastWeek'];
+  var WEEKLY_ORDER = ['week_1229','week_0105','week_0112','week_0119','week_0126','week_0202','week_0209','week_0216','week_0223','week_0302','week_0309','week_0316','week_0323','week_0330','week_0406','week_0413','week_0420','week_0427','week_0504','lastWeek'];
+  var WEEK_LABELS_MAP = {'week_1229':'Dec 29','week_0105':'Jan 5','week_0112':'Jan 12','week_0119':'Jan 19','week_0126':'Jan 26','week_0202':'Feb 2','week_0209':'Feb 9','week_0216':'Feb 16','week_0223':'Feb 23','week_0302':'Mar 2','week_0309':'Mar 9','week_0316':'Mar 16','week_0323':'Mar 23','week_0330':'Mar 30','week_0406':'Apr 6','week_0413':'Apr 13','week_0420':'Apr 20','week_0427':'Apr 27','week_0504':'May 4','lastWeek':'May 11'};
+  var RECENT_WKS = ['week_0420','week_0427','week_0504','lastWeek'];
   var leadWeekly = {};
   WEEKLY_ORDER.forEach(function(wk){
     if (!leads[wk]) return;
